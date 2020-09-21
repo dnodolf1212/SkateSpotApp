@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-   root ''
+  #root '/home'
   resources :users
   resources :skatespots
   resources :comments 
