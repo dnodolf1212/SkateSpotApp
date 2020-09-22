@@ -17,9 +17,9 @@ class SkatespotsController < ApplicationController
     @skatespot = Skatespot.new(skatespot_params)
     if @skatespot.valid? 
       @skatespot.save
-      render :show 
+      redirect_to 
     else 
-      redirect_to skatespots_path
+      render :new 
     end
   end 
   

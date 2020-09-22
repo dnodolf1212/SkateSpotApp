@@ -1,12 +1,40 @@
-<%= form_with(model: skatespot, local: true) do |form| %>
-  <% if skatespot.errors.any?%>
+<%= form_with(model: @skatespot, local: true) do |form| %>
+  <% if @skatespot.errors.any?%>
     <div id="error_explanation">
-      <h3><%= pluralize(skatespot.errors.count, "error") %> glitched the saving process</h3>
+      <h3><%= pluralize(@skatespot.errors.count, "error") %> glitched the saving process</h3>
 
       <ul>
-        <% skatespot.errors.full_messages/each do |message| %>
+        <% @skatespot.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
+  <% end %>
+
+  <div class="container">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="container">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="container">
+    <%= form.label :nickname %>
+    <%= form.text_field :nickname %>
+  </div>
+
+  <div class="container">
+    <%= form.label "Create a Category" %>
+    <%= form.text_field :category %>
+    <%= form.label "Categories" %>
+    <%= collection_select :category, nil, Skatespot.all, :id, :category %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
   <% end %>
