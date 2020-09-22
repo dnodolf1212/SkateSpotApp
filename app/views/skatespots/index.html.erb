@@ -1,8 +1,6 @@
 <ul>
 <% @skatespots.each do |spot| %>
-  <h1><%= spot.name %></h1>
+  <h1><%= link_to spot.name, skatespot_path(spot) %></h1>
   <%= spot.location %>
-  <%= spot.nickname %>
-  <%= spot.category %>
   <% end %>
 </ul>

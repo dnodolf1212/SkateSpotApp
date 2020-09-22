@@ -1,5 +1,5 @@
 class Skatespot < ApplicationRecord
-  #belongs_to :user
-  #has_many :comments, through: :users 
+  belongs_to :user
+  has_many :comments, through: :users 
 
 end

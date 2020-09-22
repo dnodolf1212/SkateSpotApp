@@ -1,31 +1,35 @@
 class SkatespotsController < ApplicationController
+  before_action :set_spot, only: [:show, :edit, :update, :destroy]
 
   def index 
     @skatespots = Skatespot.all
   end 
 
-  def show 
-    set_spot
-  end 
-
   def new 
     @skatespot = Skatespot.new
+    
   end
   
+  def show 
+  end 
+  
   def create 
-    set_spot
+    @skatespot = Skatespot.new(skatespot_params)
+    if @skatespot.valid? 
+      @skatespot.save
+      render :show 
+    else 
+      redirect_to skatespots_path
+    end
   end 
   
   def edit
-    set_spot 
   end 
 
   def update
-    set_spot
   end 
 
-  def destroy
-    set_spot 
+  def destroy 
   end 
 
   private 
@@ -34,4 +38,7 @@ class SkatespotsController < ApplicationController
     @skatespot = Skatespot.find_by_id(params[:id])
   end
 
+  def skatespot_params 
+    params.require(:skatespot).permit(:location, :nickname, :category, :name) 
+  end
 end
