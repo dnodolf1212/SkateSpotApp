@@ -30,7 +30,7 @@
     <%= form.label "Create a Category" %>
     <%= form.text_field :category %>
     <%= form.label "Categories" %>
-    <%= collection_select :category, nil, Skatespot.all, :id, :category %>
+    <%= collection_select :category, nil, Skatespot.all, :id, :category, include_blank: true %>
   </div>
 
   <div class="actions">
