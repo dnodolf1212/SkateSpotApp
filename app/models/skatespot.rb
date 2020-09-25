@@ -1,5 +1,6 @@
 class Skatespot < ApplicationRecord
-  #belongs_to :user
+  belongs_to :user
+  has_many :comments
   has_many :comments, through: :users 
 
   validates :name, presence: true 
@@ -7,3 +8,4 @@ class Skatespot < ApplicationRecord
   validates :category, presence: true
 
 end
+ 

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  #root '/home'
+  get '/signup', to: 'users#new' 
+  #login routes
+  #get '/login', to: 'sessions/new'
+  #post '/login', to: 'sessions/create'
+  #get 'sessions/destroy'
+  
   resources :users
   resources :skatespots
   resources :comments 

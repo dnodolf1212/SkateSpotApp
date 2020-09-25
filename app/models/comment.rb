@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :skatespots 
-  belongs_to :users
+  belongs_to :skatespot 
+  belongs_to :user
   
 end

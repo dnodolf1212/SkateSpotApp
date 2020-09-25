@@ -2,12 +2,16 @@ class SkatespotsController < ApplicationController
   before_action :set_spot, only: [:show, :edit, :update, :destroy]
 
   def index 
-    @skatespots = Skatespot.all
+    @skatespots = if params[:comment_id]
+      Comment.find_by_skatespot_id(params[:skatespot_id]).alpha_order
+    else
+      Skatespot.all
+    end
   end 
 
   def new 
     @skatespot = Skatespot.new
-    
+    #@comment = Comment.find_by_id(params[:comment_id]) if params([:comment_id])
   end
   
   def show 
@@ -15,9 +19,8 @@ class SkatespotsController < ApplicationController
   
   def create 
     @skatespot = Skatespot.new(skatespot_params)
-    if @skatespot.valid? 
-      @skatespot.save
-      redirect_to 
+    if @skatespot.save
+      redirect_to skatespot_path(@skatespot)
     else 
       render :new 
     end
@@ -41,4 +44,5 @@ class SkatespotsController < ApplicationController
   def skatespot_params 
     params.require(:skatespot).permit(:location, :nickname, :category, :name) 
   end
+   
 end
