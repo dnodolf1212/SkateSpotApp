@@ -13,7 +13,7 @@ class SkatespotsController < ApplicationController
   end 
   
   def create 
-    @skatespot = Skatespot.new(skatespot_params)
+    @skatespot = current_user.skatespot.new(skatespot_params)
     if @skatespot.save
       redirect_to skatespot_path(@skatespot)
     else 

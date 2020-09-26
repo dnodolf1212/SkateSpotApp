@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
+  get 'site/index'
+  root 'site#welcome'
+  #signup routes
   get '/signup', to: 'users#new' 
   #login routes
-  #get '/login', to: 'sessions/new'
-  #post '/login', to: 'sessions/create'
-  #get 'sessions/destroy'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  #logout route
+  delete '/logout', to: 'sessions#destroy'
   
   resources :users
-  resources :skatespots
-  resources :comments 
+  
+  resources :comments
+  
+  resources :skatespots do 
+    resources :comments
+  end 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
