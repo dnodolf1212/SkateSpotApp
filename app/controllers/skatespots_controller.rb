@@ -2,16 +2,11 @@ class SkatespotsController < ApplicationController
   before_action :set_spot, only: [:show, :edit, :update, :destroy]
 
   def index 
-    @skatespots = if params[:comment_id]
-      Comment.find_by_skatespot_id(params[:skatespot_id]).alpha_order
-    else
-      Skatespot.all
-    end
+    @skatespots = Skatespot.all
   end 
 
   def new 
     @skatespot = Skatespot.new
-    #@comment = Comment.find_by_id(params[:comment_id]) if params([:comment_id])
   end
   
   def show 
