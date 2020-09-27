@@ -1,0 +1,8 @@
+<h1>Edit <%= @skatespot.name %></h1>
+<%= form_for @skatespot do |f| %> 
+  <%= f.label :category %><br>
+  <%= f.text_field :category %><br>
+  <%= f.label :description %><br>
+  <%= f.text_field :description %><br>
+  <%= f.submit %>
+  <% end %>

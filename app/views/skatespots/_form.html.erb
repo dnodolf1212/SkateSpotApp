@@ -11,29 +11,29 @@
     </div>
   <% end %>
 
-  <div class="container">
+  <div >
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
-  <div class="container">
+  <div >
     <%= form.label :location %>
     <%= form.text_field :location %>
   </div>
 
-  <div class="container">
+  <div >
     <%= form.label :nickname %>
     <%= form.text_field :nickname %>
   </div>
 
-  <div class="container">
+  <div >
     <%= form.label "Create a Category" %>
     <%= form.text_field :category %>
     <%= form.label "Categories" %>
     <%= collection_select :category, nil, Skatespot.all, :id, :category, include_blank: true %>
   </div>
 
-  <div class="container">
+  <div >
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
