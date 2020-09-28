@@ -1,7 +1,6 @@
 class SkatespotsController < ApplicationController
   before_action :set_spot, only: [:create, :show, :edit, :update, :destroy]
-  before_action :redirect_if_not_logged_in
- 
+  
   
   def index 
     @skatespots = Skatespot.all
@@ -12,7 +11,6 @@ class SkatespotsController < ApplicationController
   end
   
   def show 
-
   end 
   
   def create 
@@ -40,16 +38,18 @@ class SkatespotsController < ApplicationController
   private 
 
   def set_spot
-    if @skatespot
-    @skatespot = Skatespot.find_by_id(params[:id])
-    else
-      flash[:alert] = "Nothing to see there boss"
-      redirect_to skatespots_path
-    end 
+     @skatespot = Skatespot.find_by_id(params[:id])
   end
 
   def skatespot_params 
     params.require(:skatespot).permit(:location, :nickname, :category, :description, :name) 
+  end
+
+  def does_it_exist?(id)
+    set_spot 
+    if @skatespot == nil? 
+      redirect_to skatespots_path
+    end
   end
    
 end

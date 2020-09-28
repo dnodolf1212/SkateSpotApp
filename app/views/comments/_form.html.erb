@@ -10,7 +10,13 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <div class="container">
+     <%= form.label "Skatespots" %>
+    <%= form.collection_select :skatespot_id, Skatespot.all, :id, :name, include_blank: true%>
+   
+  </div>
+  
   <div class="container">
     <%= form.label :content %>
     <%= form.text_area :content %>
