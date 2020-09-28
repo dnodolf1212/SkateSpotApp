@@ -1,7 +1,6 @@
 class SkatespotsController < ApplicationController
   before_action :set_spot, only: [:create, :show, :edit, :update, :destroy]
   
-  
   def index 
     @skatespots = Skatespot.all
   end 
@@ -43,13 +42,6 @@ class SkatespotsController < ApplicationController
 
   def skatespot_params 
     params.require(:skatespot).permit(:location, :nickname, :category, :description, :name) 
-  end
-
-  def does_it_exist?(id)
-    set_spot 
-    if @skatespot == nil? 
-      redirect_to skatespots_path
-    end
   end
    
 end

@@ -1,0 +1,11 @@
+<h1>Comments Page</h1>
+
+<ul>
+<% @comments.each do |comment| %>
+  <h1><%= comment.skatespot.name%></h1>
+  <%= comment.created_at.strftime(" %m/%d/%Y  at %I:%M %p ") %><br>
+  <%= comment.content%><br>
+  <%= comment.busted?%><br>
+  <%= comment.status %>
+  <% end %>
+</ul>
