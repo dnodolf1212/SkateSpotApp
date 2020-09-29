@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
   end 
 
   def create
+    #binding.pry
      @comment = current_user.comments.build(comment_params)
      if @comment.save 
       redirect_to comments_path(@comment)
@@ -26,6 +27,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment.update(comment_params)
+    redirect_to comments_path
   end 
 
   def destroy

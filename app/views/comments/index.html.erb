@@ -3,9 +3,12 @@
 <ul>
 <% @comments.each do |comment| %>
   <h1><%= comment.skatespot.name%></h1>
-  <%= comment.created_at.strftime(" %m/%d/%Y  at %I:%M %p ") %><br>
+  <%= "Content:" %>
   <%= comment.content%><br>
-  <%= comment.busted?%><br>
-  <%= comment.status %>
+  <h3><%= "Is the spot busted??"%><%= comment.busted%></h3><br>
+  <%= "Spot Status:" %>
+  <%= comment.status %><br>
+  <%= link_to "Edit This Comment", edit_comment_path(comment) %>
   <% end %>
 </ul>
+<%= link_to "Logout", logout_path, method: 'delete' %>

@@ -10,9 +10,14 @@ class SkatespotsController < ApplicationController
   end
   
   def show 
+    if @skatespot == nil 
+      flash[:alert] = "Nothing to see here!"
+      redirect_to skatespots_path 
+    end
   end 
   
   def create 
+    #binding.pry
     @skatespot = Skatespot.new(skatespot_params)
     if @skatespot.save
       redirect_to skatespot_path(@skatespot)
@@ -41,7 +46,7 @@ class SkatespotsController < ApplicationController
   end
 
   def skatespot_params 
-    params.require(:skatespot).permit(:location, :nickname, :category, :description, :name) 
+    params.require(:skatespot).permit(:location, :nickname, :category, :description, :name, comment_attributes: [:content, :busted?, :status]) 
   end
    
 end
