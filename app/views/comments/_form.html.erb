@@ -1,33 +1,13 @@
-<%= form_with(model: @comment, local: true) do |form| %>
-
-  
-
-     <%= form.label "Skatespots" %>
-    <%= form.collection_select :skatespot_id, Skatespot.all, :id, :name, include_blank: true%>
-   
-
-  
+<%= form_for [@skatespot, @comment] do |form| %>
+    
+    
     <%= form.label :content %>
     <%= form.text_area :content %>
- 
-
-
- 
     <%= form.label "Busted??" %>
     <%= form.check_box :busted %>
-
-  
-
-  
     <%= form.label "Create a Status" %>
     <%= form.text_field :status %>
     <%= form.label "Existing Statuses" %>
     <%= collection_select :status, nil, Comment.all, :id, :status, include_blank: true %>
-  
-
-
-  <div class="actions">
     <%= form.submit %>
-  </div>
-
-  <% end %>
+<% end %>

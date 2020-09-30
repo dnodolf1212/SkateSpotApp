@@ -8,7 +8,10 @@
   <h3><%= "Is the spot busted??"%><%= comment.busted%></h3><br>
   <%= "Spot Status:" %>
   <%= comment.status %><br>
-  <%= link_to "Edit This Comment", edit_comment_path(comment) %>
+  
+  <%= link_to "Write a Comment", new_skatespot_comment_path %><br>
+
+  <%= render_comment_edit %>
+
   <% end %>
 </ul>
-<%= link_to "Logout", logout_path, method: 'delete' %>

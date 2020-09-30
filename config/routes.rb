@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/auth/facebook/callback' => 'sessions#facebook'
+  #match '/auth/facebook/callback', to: 'sessions#create', via: [:get, :post]
   #logout route
   delete '/logout', to: 'sessions#destroy'
   
   resources :users
   
-  resources :comments
+  #resources :comments
   
   resources :skatespots do 
     resources :comments

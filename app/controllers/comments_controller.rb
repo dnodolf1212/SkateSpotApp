@@ -6,28 +6,36 @@ class CommentsController < ApplicationController
   end 
 
   def new
+    @skatespot = Skatespot.find_by_id(params[:skatespot_id])
     @comment = Comment.new 
+  
   end 
 
   def show 
   end 
 
   def create
-    #binding.pry
-     @comment = current_user.comments.build(comment_params)
-     if @comment.save 
-      redirect_to comments_path(@comment)
-     else 
+  
+    @comment = current_user.comments.build(comment_params)
+    @comment.skatespot = Skatespot.find_by_id(params[:skatespot_id])
+    
+    if @comment.save 
+      redirect_to skatespot_path(@skatespot_id, @comment)
+    else 
       render :new 
-     end 
+    end 
   end 
 
-  def edit 
+  def edit
+  
+    @skatespot = Skatespot.find_by_id(params[:skatespot_id])
+    binding.pry
   end 
-
+ 
   def update
+   
     @comment.update(comment_params)
-    redirect_to comments_path
+    redirect_to skatespot_path
   end 
 
   def destroy
@@ -38,7 +46,7 @@ class CommentsController < ApplicationController
   private 
 
   def comment_params 
-    params.require(:comment).permit(:content, :status, :busted, :skatespot_id)
+    params.require(:comment).permit(:content, :status, :busted)
   end
 
   def set_comment 

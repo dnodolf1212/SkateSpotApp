@@ -10,6 +10,7 @@ class SkatespotsController < ApplicationController
   end
   
   def show 
+    @comments = Comment.all
     if @skatespot == nil 
       flash[:alert] = "Nothing to see here!"
       redirect_to skatespots_path 
@@ -17,7 +18,6 @@ class SkatespotsController < ApplicationController
   end 
   
   def create 
-    #binding.pry
     @skatespot = Skatespot.new(skatespot_params)
     if @skatespot.save
       redirect_to skatespot_path(@skatespot)
