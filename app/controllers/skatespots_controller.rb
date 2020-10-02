@@ -10,7 +10,7 @@ class SkatespotsController < ApplicationController
   end
   
   def show 
-    @comments = Comment.all
+    @comments = Comment.includes(:skatespot).find_by_id(params[:id])
     if @skatespot == nil 
       flash[:alert] = "Nothing to see here!"
       redirect_to skatespots_path 

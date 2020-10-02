@@ -1,19 +1,20 @@
 <%= link_to "All the Spots", skatespots_path %>
-  <h1><%= @skatespot.name %></h1>
-    <%= @skatespot.location %><br>
-    <%= @skatespot.nickname %><br>
-    <%= @skatespot.category %><br>
-    <%= @skatespot.description %><br>
+  <h1>Skatespot: <%= @skatespot.name %></h1>
 
-   <h3>Comments Section</h3>
-   <ul>
-    <%= @skatespot.comments.each do |comment| %>
-      <%= comment.content %>
-      <%= render_comment_edit %>
-      <%end%>
-    
-    </ul>
+  <%= link_to "Comments", skatespot_comments_path([:skatespot_id]) %>
 
-<%= link_to "Spot is BUSTED!", skatespot_path(@skatespot), method: :delete %><br>
-<%= link_to "Edit This Spot!", edit_skatespot_path(@skatespot) %><br>
-<%= link_to "Write a Comment for this Spot!", new_skatespot_comment_path(@skatespot) %><br>
+    <h4>Location: <%= @skatespot.location %></h4>
+    <h4>Nickname: <%= @skatespot.nickname %></h4>
+    <h4>Spot Category: <%= @skatespot.category %></h4>
+    <h4>Description: <%= @skatespot.description %></h4>
+
+    <%= link_to "Spot is BUSTED!", skatespot_path(@skatespot), method: :delete %><br>
+   <%= link_to "Edit This Spot!", edit_skatespot_path(@skatespot) %><br>
+    <%= link_to "Write a Comment for this Spot!", new_skatespot_comment_path(@skatespot) %><br>
+
+
+   
+   
+
+
+

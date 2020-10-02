@@ -14,9 +14,12 @@ class SessionsController < ApplicationController
   end
     
   def facebook 
+    binding.pry
     if @user = User.find_or_create_by_facebook(auth)
       session[:user_id] = @user.id
       redirect_to skatespots_path
+    else
+      redirect_to login_path
     end
   end
 
