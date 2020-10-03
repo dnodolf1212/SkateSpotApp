@@ -5,12 +5,6 @@ class Skatespot < ApplicationRecord
 
   validates :name, presence: true 
   validates :location, presence: true 
-
-  def comment_attributes=(comment_attributes)
-    @comment = Comment.find_or_create_by(comment_attributes)
-    self.comment = @comment
-    save 
-  end
   
 
 end

@@ -1,9 +1,13 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only [:show, :edit, :update, :destroy]
   before_action :set_skatespot, only: [:index]
+  
   def index 
-    #binding.pry 
+    if params[:skatespot_id]
+     @comments = Comment.find_by_skatespot_id(params[:skatespot_id]) 
+    else
      @comments = Comment.all 
+    end
   end 
 
   def new
@@ -12,28 +16,27 @@ class CommentsController < ApplicationController
   end 
 
   def create
+    
     @comment = current_user.comments.build(comment_params)
-    @comment.skatespot = Skatespot.find_by_id(params[:skatespot_id])
-    if @comment.save 
-      redirect_to skatespot_comment_path([:skatespot_id], @comment)
-    else 
-      render :new 
+    
+      if @comment.save 
+        redirect_to skatespot_comments_path([:skatespot_id], @comment)
+      else 
+        render :new 
     end 
   end 
 
   def edit
-    #binding.pry
-    @skatespot = @comment.skatespot
+    @skatespot = Skatespot.find_by_id(params[:id])
   end 
  
   def update
-   
-    @comment.update(comment_params)
-    redirect_to skatespot_comment_path
+   @comment.update(comment_params)
+   redirect_to skatespot_comment_path
   end 
 
   def destroy
-    @comment.destroy
+    @comment.delete
     redirect_to skatespot_comments_path
   end 
 

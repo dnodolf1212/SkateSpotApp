@@ -7,10 +7,11 @@ class SkatespotsController < ApplicationController
 
   def new 
     @skatespot = Skatespot.new
+    @comment = current_user.comments.build
+    
   end
   
   def show 
-    @comments = Comment.includes(:skatespot).find_by_id(params[:id])
     if @skatespot == nil 
       flash[:alert] = "Nothing to see here!"
       redirect_to skatespots_path 
@@ -46,7 +47,7 @@ class SkatespotsController < ApplicationController
   end
 
   def skatespot_params 
-    params.require(:skatespot).permit(:location, :nickname, :category, :description, :name, comment_attributes: [:content, :busted?, :status]) 
+    params.require(:skatespot).permit(:location, :nickname, :category, :description, :name, :comment_id, comment_attributes: [:content, :busted?, :status]) 
   end
    
 end

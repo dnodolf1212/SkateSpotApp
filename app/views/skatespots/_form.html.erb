@@ -40,7 +40,7 @@
   <br>
   <div >
     <h2><%= form.label "New Spot Comments" %></h2><br>
-      <%= form.fields_for Comment.new do |comment_field| %>
+      <%= form.fields_for :comment, Comment.new do |comment_field| %>
         
         <%= comment_field.label :content %>
         <%= comment_field.text_area :content %><br>
