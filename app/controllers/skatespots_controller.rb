@@ -7,8 +7,6 @@ class SkatespotsController < ApplicationController
 
   def new 
     @skatespot = Skatespot.new
-    @comment = current_user.comments.build
-    
   end
   
   def show 
@@ -47,7 +45,7 @@ class SkatespotsController < ApplicationController
   end
 
   def skatespot_params 
-    params.require(:skatespot).permit(:location, :nickname, :category, :description, :name, :comment_id, comment_attributes: [:content, :busted?, :status]) 
+    params.require(:skatespot).permit(:location, :nickname, :category, :description, :name )
   end
    
 end

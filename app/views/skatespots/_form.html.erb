@@ -1,4 +1,4 @@
-<%= form_with(model: @skatespot, local: true) do |form| %>
+<%= form_with(model: @skatespot, local: true) do |f| %>
   <% if @skatespot.errors.any?%>
     <div id="error_explanation">
       <h3><%= pluralize(@skatespot.errors.count, "error") %> glitched the saving process</h3>
@@ -8,51 +8,20 @@
           <li><%= message %></li>
         <% end %>
       </ul>
-    </div>
+    </div> 
   <% end %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :location %>
+    <%= f.text_field :location %><br>
+    <%= f.label :nickname %>
+    <%= f.text_field :nickname %><br>
+    <%= f.label "Create a Category" %>
+    <%= f.text_field :category %><br>
 
-  <div >
-    <h2><%= form.label :name %></h2>
-    <%= form.text_field :name %>
-  </div>
-
-  <div >
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div >
-    <%= form.label :nickname %>
-    <%= form.text_field :nickname %>
-  </div>
-
-  <div >
-    <%= form.label "Create a Category" %>
-    <%= form.text_field :category %><br>
-    <%= form.label "OR Select from Existing Categories" %>
-    <%= collection_select :category, nil, Skatespot.all, :id, :category, include_blank: true %>
-  </div>
-
-  <div >
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-  <br>
-  <div >
-    <h2><%= form.label "New Spot Comments" %></h2><br>
-      <%= form.fields_for :comment, Comment.new do |comment_field| %>
-        
-        <%= comment_field.label :content %>
-        <%= comment_field.text_area :content %><br>
-        <%= comment_field.label :busted? %>
-        <%= comment_field.check_box :busted? %><br>
-        <%= comment_field.label :status %>
-        <%= comment_field.text_area :status %>
-      <% end %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
+    <%= f.label "OR Select from Existing Categories" %>
+    <%= collection_select :category, nil, Skatespot.all, :id, :category, include_blank: true %><br>
+    <%= f.label :description %>
+    <%= f.text_area :description %><br>
+  <%= f.submit %>
   <% end %>

@@ -1,23 +1,25 @@
-<%= form_for [@skatespot, @comment] do |form| %>
-    <% if @comment.errors.any?%>
+
+
+<%= form_for @comment do |f| %>
+  <% if @comment.errors.any?%>
     <div id="error_explanation">
-      <h3><%= pluralize(@skatespot.comments.errors.count, "error") %> glitched the saving process</h3>
+      <h3><%= pluralize(@comment.errors.count, "error") %> glitched the saving process</h3>
 
       <ul>
-        <% @skatespot.comments.errors.full_messages.each do |message| %>
+        <% @comment.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
-    </div>
-  <% end %>   
-    
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-    <%= form.label "Busted??" %>
-    <%= form.check_box :busted %>
-    <%= form.label "Create a Status" %>
-    <%= form.text_field :status %>
-    <%= form.label "Existing Statuses" %>
-    <%= collection_select :status, nil, Comment.all, :id, :status, include_blank: true %>
-    <%= form.submit %>
+    </div> 
+  <% end %>
+  
+  <%= f.label "Choose the Spot" %>  
+  <%= f.collection_select :skatespot_id, Skatespot.all, :id, :name %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.label :busted %>
+    <%= f.check_box :busted %>
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+    <%= f.submit %>
 <% end %>

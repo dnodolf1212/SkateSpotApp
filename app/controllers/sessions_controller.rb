@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   
   def new
+    @user = User.new
   end
 
   def create
@@ -9,12 +10,12 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to skatespots_path 
     else
+      flash[:alert] = "Looks like you have to sign up first!!"
       render :new
     end
   end
     
   def facebook 
-    binding.pry
     if @user = User.find_or_create_by_facebook(auth)
       session[:user_id] = @user.id
       redirect_to skatespots_path
