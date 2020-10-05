@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
   # current_user.skatespots.comments.new WHEN YOU ADD USER MODEL!!!
   def create 
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
     if @comment.save 
       redirect_to comments_path(@comment)
     else 

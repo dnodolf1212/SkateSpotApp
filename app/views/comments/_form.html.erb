@@ -13,8 +13,8 @@
     </div> 
   <% end %>
   
-  <%= f.label "Choose the Spot" %>  
-  <%= f.collection_select :skatespot_id, Skatespot.all, :id, :name %>
+  <h3><%= f.label "Choose the Spot" %></h3>  
+  <%= f.collection_select :skatespot_id, Skatespot.all, :id, :name %><br>
     <%= f.label :content %>
     <%= f.text_area :content %>
     <%= f.label :busted %>
