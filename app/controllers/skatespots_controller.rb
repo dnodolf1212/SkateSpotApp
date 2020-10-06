@@ -2,7 +2,11 @@ class SkatespotsController < ApplicationController
   before_action :set_spot, only: [:create, :show, :edit, :update, :destroy]
   
   def index 
+    if current_user
     @skatespots = Skatespot.all
+    else
+      redirect_to login_path
+    end
   end 
 
   def new 
@@ -30,7 +34,7 @@ class SkatespotsController < ApplicationController
 
   def update
     @skatespot.update(skatespot_params)
-    redirect_to skatespots_path
+    redirect_to skatespot_path
   end 
 
   def destroy 

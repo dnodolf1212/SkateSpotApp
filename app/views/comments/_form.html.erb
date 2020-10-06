@@ -1,6 +1,6 @@
+ <% binding.pry %>
+<%= form_for [@skatespot, @comment] do |f| %>
 
-
-<%= form_for @comment do |f| %>
   <% if @comment.errors.any?%>
     <div id="error_explanation">
       <h3><%= pluralize(@comment.errors.count, "error") %> glitched the saving process</h3>
@@ -12,7 +12,9 @@
       </ul>
     </div> 
   <% end %>
+
   
+
   <h3><%= f.label "Choose the Spot" %></h3>  
   <%= f.collection_select :skatespot_id, Skatespot.all, :id, :name %><br>
     <%= f.label :content %>
