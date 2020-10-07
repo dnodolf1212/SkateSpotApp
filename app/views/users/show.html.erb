@@ -1,8 +1,9 @@
+<% #binding.pry %>
 <%= link_to "All the Spots", skatespots_path %>
 <h1>User Show Page!</h1>
 
 <ul>
-  <h2><li><%= current_user.name %></li></h2>
-  <li><%= current_user.email %></li>
-  <li><%= current_user.city %></li><br>
+  <h2><li><%= @user.name %></li></h2>
+  <li><%= @user.email %></li>
+  <li><%= @user.city %></li><br>
 </ul>
