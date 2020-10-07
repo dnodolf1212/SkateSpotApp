@@ -1,18 +1,20 @@
 <%= link_to "All the Spots", skatespots_path %>
 <h1>Skatespot Comments List</h1>
 
-<% current_user.comments.each do |spot_comment| %>
-   
+<% @comments.each do |spot_comment| %>
+  
     <%= spot_comment.skatespot.name %>
 
   <ul>
     <li>User: <%= link_to spot_comment.user.name, user_path(current_user) %></li>
     <li>Posted at: <%= spot_comment.created_at.strftime(" %Y-%b-%d,  at %I:%M%p") %></li>
     <li>Comment: <%= spot_comment.content %></li>
-    <li>Busted??  <%= spot_comment.busted%></li>
+    <li>Busted??  <%= spot_comment.busted? %></li>
     <li>Spot Status:  <%= spot_comment.status %></li>
 
-    <%= link_to "Edit This Comment", edit_skatespot_comment_path(current_user, spot_comment) %>
-    <%= link_to "Delete This Comment!", skatespot_comment_path(current_user, spot_comment), method: :delete %><br>
+    <% if current_user == spot_comment.user %>
+    <%= link_to "Edit This Comment", edit_skatespot_comment_path(spot_comment.skatespot, spot_comment) %> 
+    <%=link_to("Delete This Comment!", skatespot_comment_path(spot_comment.skatespot, spot_comment), method: :delete) %>
+    <% end %>
   </ul>
 <% end %>

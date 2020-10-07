@@ -1,15 +1,7 @@
 <%= form_with(model: @skatespot, local: true) do |f| %>
-  <% if @skatespot.errors.any?%>
-    <div id="error_explanation">
-      <h3><%= pluralize(@skatespot.errors.count, "error") %> glitched the saving process</h3>
 
-      <ul>
-        <% @skatespot.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div> 
-  <% end %>
+  <%= render partial: 'layouts/errors', locals: { object: @skatespot } %>
+
     <%= f.label :name %>
     <%= f.text_field :name %><br>
     <%= f.label :location %>

@@ -1,13 +1,15 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
-  def new 
+  def new
+    @skatespot_id = params[:skatespot_id] if params[:skatespot_id]
     @skatespot = Skatespot.find_by_id(params[:skatespot_id])
     @comment = Comment.new
   end
 
 
   def create 
-    @comment = current_user.comments.new(comment_params)
+   @comment = current_user.comments.new(comment_params)
     if @comment.save 
       redirect_to skatespot_comments_path(@comment)
     else 
@@ -15,25 +17,22 @@ class CommentsController < ApplicationController
     end
   end
   
-  def index  
-      current_user.comments = Comment.all
+  def index
+      @comments = Comment.all
   end
 
-  def edit 
-    @comment = Comment.find_by_id(params[:id])
-    @skatespot = @comment.skatespot 
+  def edit
+    @skatespot = Skatespot.find(params[:skatespot_id])
   end 
 
   def update 
-    @comment = Comment.find_by_id(params[:id])
-    @comment.update(comment_params)
+    current_user.comments.update(comment_params)
     redirect_to skatespot_comments_path(@comment)
   end
 
   def destroy 
-    @comment = Comment.find_by_id(params[:id])
-    @comment.destroy
-    flash[:alart] = "That Comment is Destroyed!!!!!!!!!"
+    current_user.comments.destroy
+    flash[:notice] = "That Comment is Destroyed!!!!!!!!!"
     redirect_to skatespot_comments_path
   end
 
@@ -41,6 +40,10 @@ class CommentsController < ApplicationController
 
   def comment_params 
     params.require(:comment).permit(:content, :busted?, :status, :skatespot_id)
+  end
+
+  def set_comment 
+    @comment = Comment.find_by_id(params[:id])
   end
 
 end
