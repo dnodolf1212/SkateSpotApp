@@ -1,7 +1,8 @@
-<% #binding.pry %>
-<%= form_for [@skatespot, @comment] do |f|%>
-  
-<h3><%= f.label "Choose the Spot" %></h3>  
+<%= render partial: 'layouts/errors', locals: { object: @comment } %>
+
+<%= form_for [@skatespot, @comment] do |f| %>
+
+  <h3><%= f.label "Choose the Spot" %></h3>  
   <%= f.collection_select :skatespot_id, Skatespot.all, :id, :name %><br>
     <%= f.label :content %>
     <%= f.text_area :content %>
@@ -10,4 +11,5 @@
     <%= f.label :status %>
     <%= f.text_field :status %>
     <%= f.submit %>
+    
 <% end %>
