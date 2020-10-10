@@ -37,7 +37,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy 
-    current_user.comments.destroy
+    binding.pry
+    @comment.destroy
     flash[:notice] = "That Comment is Destroyed!!!!!!!!!"
     redirect_to skatespot_comments_path
   end
