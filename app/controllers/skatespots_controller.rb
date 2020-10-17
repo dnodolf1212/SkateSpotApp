@@ -30,6 +30,11 @@ class SkatespotsController < ApplicationController
   end 
   
   def edit
+    if @skatespot
+      render :edit 
+    else 
+      redirect_to skatespots_path 
+    end
   end 
 
   def update

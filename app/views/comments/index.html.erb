@@ -9,7 +9,7 @@
     <li>User: <%= link_to spot_comment.user.name, user_path(spot_comment.user) %></li>
     <li>Posted at: <%= spot_comment.created_at.strftime(" %Y-%b-%d,  at %I:%M%p") %></li>
     <li>Comment: <%= spot_comment.content %></li>
-    <li>Busted??  <%= spot_comment.busted? %></li>
+    <li>Busted??  <%= spot_comment.busted %></li>
     <li>Spot Status:  <%= spot_comment.status %></li>
 
     <% if current_user == spot_comment.user %>
