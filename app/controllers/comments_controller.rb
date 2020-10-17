@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
   private 
 
   def comment_params 
-    params.require(:comment).permit(:content, :busted?, :status, :skatespot_id)
+    params.require(:comment).permit(:content, :busted, :status, :skatespot_id)
   end
 
   def set_comment 

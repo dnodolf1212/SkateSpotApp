@@ -1,8 +1,7 @@
 <%= link_to "All the Spots", skatespots_path %>
 <h1>Skatespot Comments List</h1>
-<% #ebinding.pry %>
+
 <% @comments.each do |spot_comment| %>
-  
     <%= spot_comment.skatespot.name %>
 
   <ul>
@@ -13,8 +12,8 @@
     <li>Spot Status:  <%= spot_comment.status %></li>
 
     <% if current_user == spot_comment.user %>
-    <%= link_to "Edit This Comment", edit_skatespot_comment_path(spot_comment.skatespot, spot_comment) %> 
-    <%=link_to("Delete This Comment!", skatespot_comment_path(spot_comment.skatespot, spot_comment), method: :delete) %>
+      <%= link_to "Edit This Comment", edit_skatespot_comment_path(spot_comment.skatespot, spot_comment) %> 
+      <%=link_to("Delete This Comment!", skatespot_comment_path(spot_comment.skatespot, spot_comment), method: :delete) %>
     <% end %>
   </ul>
 <% end %>
