@@ -14,7 +14,7 @@
     <%= f.text_field :category %><br>
 
     <%= f.label "OR Select from Existing Categories" %>
-    <%= collection_radio_buttons :category, nil, Skatespot.all, :id, :category, include_blank: true %><br>
+    <%= collection_select :skatespot, :category, Skatespot.all, :category, :category, include_blank: true %><br>
     
     <%= f.label :description %>
     <%= f.text_area :description %><br>

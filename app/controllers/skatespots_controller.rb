@@ -54,7 +54,7 @@ class SkatespotsController < ApplicationController
   end
 
   def skatespot_params 
-    params.require(:skatespot).permit(:location, :nickname, category: [], :description, :name )
+    params.require(:skatespot).permit(:location, :nickname, :category, :description, :name )
   end
    
 end
