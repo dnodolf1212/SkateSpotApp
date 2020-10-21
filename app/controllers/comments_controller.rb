@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
-
+  before_action :set_skatespot, only: [:index, :edit]
   def new
     @skatespot_id = params[:skatespot_id] if params[:skatespot_id]
     @skatespot = Skatespot.find_by_id(params[:skatespot_id])
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @skatespot = Skatespot.find(params[:skatespot_id])
+    
   end 
 
   def update 
@@ -50,6 +50,10 @@ class CommentsController < ApplicationController
 
   def set_comment 
     @comment = Comment.find_by_id(params[:id])
+  end
+
+  def set_skatespot 
+    @skatespot = Skatespot.find_by_id(params[:skatespot_id])
   end
 
 end

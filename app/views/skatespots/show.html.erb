@@ -1,11 +1,12 @@
-<%= link_to "All the Spots", skatespots_path %>
-  <h1>Skatespot: <%= @skatespot.name %></h1>
+<%= link_to "All the Spots", skatespots_path %><br>
+  
+  <h1><%= @skatespot.name %></h1>
 
   <%= link_to "View All Comments", skatespot_comments_path(@skatespot) %>
 
     <h4>Location: <%= @skatespot.location %></h4>
     <h4>Nickname: <%= @skatespot.nickname %></h4>
-    <h4>Spot Category: <%= @skatespot.category %></h4>
+    <h4>Category: <%= @skatespot.category %></h4>
     <h4>Description: <%= @skatespot.description %></h4>
 
     <%= link_to "Spot is BUSTED!", skatespot_path(@skatespot), method: :delete %><br>

@@ -1,22 +1,2 @@
 <h1>List a New Skatespot</h1>
-<%= form_with(model: @skatespot, local: true) do |f| %>
-
-  <%= render partial: 'layouts/errors', locals: { object: @skatespot } %>
-
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-    <%= f.label :location %>
-    <%= f.text_field :location %><br>
-    <%= f.label :nickname %>
-    <%= f.text_field :nickname %><br>
-
-    <%= f.label "Create a Category" %>
-    <%= f.text_field :category %><br>
-
-    <%= f.label "OR Select from Existing Categories" %>
-    <%= collection_select :skatespot, :category, Skatespot.all, :category, :category, include_blank: true %><br>
-    
-    <%= f.label :description %>
-    <%= f.text_area :description %><br>
-  <%= f.submit %>
-  <% end %>
+<%= render "form" %>
