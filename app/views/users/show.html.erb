@@ -7,3 +7,13 @@
   <li><%= @user.email %></li>
   <li><%= @user.city %></li><br>
 </ul>
+
+<h2><%= @user.name %>'s Skatespots</h2>
+  <ol>
+    <% @user.skatespots.each %> 
+      <% @user.skatespots.each do |s|%>
+      <li><%= s.name %><br></li>
+      <%= s.location %>
+  </ol>
+<%end%>
+  
