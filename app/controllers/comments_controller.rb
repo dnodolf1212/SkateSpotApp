@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action :set_skatespot, only: [:index, :edit]
+  before_action :set_skatespot, only: [:index, :edit, :update]
+
   def new
     @skatespot_id = params[:skatespot_id] if params[:skatespot_id]
     @skatespot = Skatespot.find_by_id(params[:skatespot_id])
@@ -20,17 +21,16 @@ class CommentsController < ApplicationController
   
   def index
     if params[:skatespot_id] 
-      @comments = Comment.find_by_skatespot_id(params[:skatespot_id])
+      @comments = Comment.find_by_skatespot_id(params[:skatespot_id]).last_first
     end
   end
 
   def edit
-    
-  end 
+  end
 
   def update 
     if current_user.comments.update(comment_params)
-      redirect_to skatespot_comments_path(@comment.skatespot, @comment)
+      redirect_to skatespot_comments_path(@skatespot, @comment)
     else
       render :edit
     end

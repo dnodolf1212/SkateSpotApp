@@ -10,5 +10,9 @@ class Comment < ApplicationRecord
     self.where(skatespot_id: id)
   end
 
+  def self.last_first 
+    self.order(created_at: :desc)
+  end
+
 end
  

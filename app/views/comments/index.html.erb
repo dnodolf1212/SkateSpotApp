@@ -11,8 +11,8 @@
     <li>Spot Status:  <%= spot_comment.status %></li>
 
     <% if current_user == spot_comment.user %>
-      <%= link_to "Edit This Comment", edit_skatespot_comment_path(spot_comment.skatespot, spot_comment) %> 
-      <%=link_to("Delete This Comment!", skatespot_comment_path(spot_comment.skatespot, spot_comment), method: :delete) %>
+      <%= link_to "Edit This Comment", edit_skatespot_comment_path(@skatespot, spot_comment) %> 
+      <%=link_to("Delete This Comment!", skatespot_comment_path(@skatespot, spot_comment), method: :delete) %>
     <% end %>
   </ul>
 <% end %>
