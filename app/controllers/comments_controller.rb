@@ -20,7 +20,6 @@ class CommentsController < ApplicationController
   end
   
   def index
-    
     if params[:skatespot_id] 
       @comments = Comment.find_by_skatespot_id(params[:skatespot_id]).last_first
     end

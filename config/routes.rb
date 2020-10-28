@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'site/index'
+  #get 'site/index'
   root 'site#welcome'
   #signup routes
   get '/signup', to: 'users#new' 
@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   #logout route
   delete '/logout', to: 'sessions#destroy'
   
-  resources :users
+  resources :users, except: [:edit, :destroy]
   
   resources :skatespots do  
-    resources :comments
+    resources :comments, except: [:show]
   end
    
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
