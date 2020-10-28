@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @skatespot = @comment.skatespot
       if @comment.save 
-        redirect_to skatespot_comments_path(@skatespot, @comment)
+        redirect_to skatespot_comments_path(@skatespot)
       else 
         render :new 
     end
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
 
   def update 
     if current_user.comments.update(comment_params)
-      redirect_to skatespot_comments_path(@comment.skatespot, @comment)
+      redirect_to skatespot_comments_path(@comment.skatespot)
     else
       render :edit
     end
