@@ -1,4 +1,4 @@
-<h1>What's Up <%= current_user.name%>!!!</h1>
+<h2>What's Up <%= current_user.name%>!!!</h2>
 <ul>
 <% @skatespots.each do |spot| %>
   <h1><%= link_to spot.name, skatespot_path(spot) %></h1>

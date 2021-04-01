@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/application.css"/>
     <title>SkateSpotApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,13 +11,13 @@
   </head>
 
   <body>
-  <% flash.each do |type, msg| %>
-    <div class="alert alert-info">
-      <%= msg %>
-    </div>
-  <% end %>
-    <%= render_navigation %>
-    <%= yield %>
-  </body>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
+      <%= render_navigation %>
+      <%= yield %>
+    </body>
 
 </html>
