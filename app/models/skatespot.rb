@@ -8,8 +8,16 @@ class Skatespot < ApplicationRecord
   validates :location, presence: true 
   validates :category, presence: true
 
-  def self.search_by_name(query)
-    self.where("name like ?", "%#{query}%")
+def self.search(search)
+  if search
+    skatespot = Skatespot.find_by(name: search)
+      if skatespot
+        self.where(name: skatespot)
+      else
+        @skatespot = Skatespot.all 
+      end
+  else
+    @skatespot = Skatespot.all
   end
 end
- 
+end

@@ -3,7 +3,9 @@ class SkatespotsController < ApplicationController
   
   def index 
     if current_user
-    @skatespots = Skatespot.all
+    @skatespots = Skatespot.search(params[:search])
+    elsif search
+      redirect_to skatespot_path(skatespot)
     else
       redirect_to login_path
     end
@@ -54,7 +56,7 @@ class SkatespotsController < ApplicationController
   end
 
   def skatespot_params 
-    params.require(:skatespot).permit(:location, :nickname, :category, :description, :name )
+    params.require(:skatespot).permit(:location, :nickname, :category, :description, :name, :search )
   end
    
 end
