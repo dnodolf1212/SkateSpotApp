@@ -1,6 +1,5 @@
 class Skatespot < ApplicationRecord
   has_many :comments
-  #has_many :users
   has_many :users, through: :comments
   
 
@@ -10,14 +9,14 @@ class Skatespot < ApplicationRecord
 
 def self.search(search)
   if search
-    skatespot = Skatespot.find_by(name: search)
+    skatespot = Skatespot.find(name: search)
       if skatespot
         self.where(name: skatespot)
       else
-        @skatespot = Skatespot.all 
+        skatespot = Skatespot.all 
       end
   else
-    @skatespot = Skatespot.all
+    skatespot = Skatespot.all
   end
 end
 end

@@ -2,10 +2,13 @@ class SkatespotsController < ApplicationController
   before_action :set_spot, only: [:create, :show, :edit, :update, :destroy]
   
   def index 
+    binding.pry
     if current_user
-    @skatespots = Skatespot.search(params[:search])
+      @skatespots = Skatespot.all
     elsif search
-      redirect_to skatespot_path(skatespot)
+      
+      @skatespot = Skatespot.search(params[:search])
+      redirect_to skatespot_path(@skatespot)
     else
       redirect_to login_path
     end
