@@ -7,8 +7,3 @@
 </ul>
 <%= link_to "Add Your Skatespot!", new_skatespot_path %> 
 
-<%= form_tag(skatespots_path, method: "get") do %>
-  <%= label_tag(:search, "Search:") %> 
-  <%= text_field_tag(:search, params[:search]) %>
-  <%= submit_tag("Search", :name => nil) %>
-  <% end %> 
